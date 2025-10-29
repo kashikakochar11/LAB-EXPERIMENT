@@ -1,28 +1,48 @@
-/*WAP to take check if the triangle is valid or not. If the validity is established, do
-check if the triangle is isosceles, equilateral, right angle, or scalene. Take sides
-of the triangle as input from a user*/
-
+/*WAP to read a list of integers and 
+store it in a single dimensional array. 
+Write a C program to print the second largest integer in a list of integers*/
 #include <stdio.h>
+#include <limits.h>
 
-int main() {
-    float side1, side2, side3;
+int main()
+{
+    int arr[100], n, i;
+    int largest = 1;
+    int secondlargest = 1;
 
-    printf("Enter three sides of the triangle: ");
-    scanf("%f %f %f", &side1, &side2, &side3);
+    printf("Enter the number of elements in the array: ");
+    if (scanf("%d", &n) != 1 || n <= 0 || n > 100) {
+        printf("Invalid number of elements. Exiting.\n");
+        return 1;
+    }
 
-    if (side1 + side2 > side3 && side2 + side3 > side1 && side1 + side3 > side2) {
-        printf("The triangle with side lengths %.2f, %.2f, and %.2f is valid.\n", side1, side2, side3);
+    for (i = 0; i < n; i++)
+    {
+        printf("enter element %d: ", i);
+        scanf("%d", &arr[i]);
+    }
 
-        if (side1 == side2 && side2 == side3) {
-            printf("The valid triangle is Equilateral.\n");
-        } else if (side1 == side2 || side2 == side3 || side3 == side1) {
-            printf("The valid triangle is Isosceles.\n");
-        } else {
-            printf("The valid triangle is Scalene.\n");
+    printf("the elements of array are:");
+    for(i=0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    //TO find the second largest element 
+
+    for(i = 0; i < n; i++)
+    {
+        if (arr[i] > largest) {
+            secondlargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondlargest && arr[i] != largest) {
+            secondlargest = arr[i];
         }
+    }
 
+    if (secondlargest == 1) {
+        printf("Cannot determine a second largest number (perhaps there are fewer than two unique elements).\n");
     } else {
-        printf("The given side lengths do not form a valid triangle.\n");
+        printf("Second largest number = %d\n", secondlargest);
     }
 
     return 0;
