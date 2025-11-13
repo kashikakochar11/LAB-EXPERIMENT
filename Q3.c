@@ -1,17 +1,30 @@
-//WAP to check if three points (x1,y1), (x2,y2) and (x3,y3) are collinear or not.
+/*Create a Book structure containing book_id, title, author name and price.
+Write a C program to pass a structure as a function argument and print the
+book details*/
 #include <stdio.h>
+#include <string.h>
 
-int main(){
-    int x1,y1,x2,y2,x3,y3,area;
-    area = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
+struct s_book
+{
+    char ID[50]; // BOOK ID 
+    char N[50];  // AUTHOR NAME 
+    char T[50];  // TITLE 
+};
 
-    printf("Enter coordinates for all three points on one line (x1 y1 x2 y2 x3 y3): ");
-    scanf("%d %d %d %d %d %d", &x1, &y1, &x2, &y2, &x3, &y3);
-
-    if (area == 0) {
-        printf("Result: The three points are COLLINEAR.\n");
-    } else {
-        printf("Result: The three points are NOT COLLINEAR.\n");
-    }
-return 0;
-    }
+int main()
+{
+    struct s_book S1;
+    printf("Enter BOOK ID: ");
+    scanf("%s", S1.ID); 
+    
+    printf("Enter author name: ");
+    scanf("%s", S1.N);
+    
+    printf("Enter BOOK TITLE: ");
+    scanf("%s", S1.T);
+    
+    printf("\n--- Book Details ---\n");
+    printf("THE BOOK ID is %s and AUTHOR NAME is %s and BOOK TITLE: %s\n", S1.ID, S1.N, S1.T);
+    
+    return 0;
+}
